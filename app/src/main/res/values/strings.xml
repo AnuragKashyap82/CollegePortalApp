@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Eduventure</string>
+    <string name="new_user_signup">New User? <b>SIGN UP</b></string>
+
+    <string name="OpenDrawer">Open Navigation drawer</string>
+    <string name="CloseDrawer">lose navigation drawer</string>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="new_to_eduventure_register">New To Eduventure? <b>Signup</b> </string>
+    <string name="already_have_an_account_sign_in">Already have an account? <b>Sign In</b></string>
+
+</resources>

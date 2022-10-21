@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray00"
+    tools:context=".StudentListActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:id="@+id/schoolDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:text="Attendance"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/presentCountTv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/shape_rect02"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dateTil"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/toolbarRl"
+        app:boxBackgroundColor="@color/textBox">
+
+        <TextView
+            android:id="@+id/dateTv"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_rect_05"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_calendar_white"
+            android:gravity="center_vertical|center_horizontal"
+            android:drawableTint="@color/colorPrimary"
+            android:hint="Today's Date"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/Gray01"
+            android:textStyle="bold" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateTil">
+
+        <RelativeLayout
+            android:id="@+id/studentRl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/studentRv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_student" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

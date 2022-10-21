@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray00"
+    tools:context=".SubjectAttendanceActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:id="@+id/schoolDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:text="Attendance"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/toolbarRl"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/studentRl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Attendance Percentage is:"
+                android:padding="22dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/presentTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/tv"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Present"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/absentTv"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/tv"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Absent"
+                android:textColor="#DD1010"
+                android:textStyle="bold"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

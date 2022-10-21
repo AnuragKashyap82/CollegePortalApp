@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/shape_rect_06"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:id="@+id/subjectNameTv"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:maxLines="1"
+            android:maxWidth="280dp"
+            android:text="Class Name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/classNameTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/subjectNameTv"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:maxLines="1"
+            android:text="4th Sem Cse"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/Tv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/classCode"
+            android:layout_marginBottom="0dp"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:maxLines="1"
+            android:text="Class Code"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/classCode"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:maxLines="1"
+            android:text="N/A"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/copyClassCodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/classCode"
+            android:background="@drawable/ic_copy_black"
+            android:visibility="visible"
+            app:backgroundTint="@color/black" />
+
+        <ImageView
+            android:id="@+id/copiedClassCodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/classCode"
+            android:background="@drawable/ic_copy_black"
+            android:backgroundTint="#13BA1C"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_more_black"
+            app:backgroundTint="@color/black" />
+
+        <TextView
+            android:id="@+id/classTeacherTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:maxLines="1"
+            android:maxWidth="300dp"
+            android:text="ClassTeacher Name"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

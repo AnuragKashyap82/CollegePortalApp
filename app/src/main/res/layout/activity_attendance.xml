@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AttendanceActivity"
+    android:orientation="vertical"
+    android:weightSum="4"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:id="@+id/imageAddRl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Student Attendance"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36dp"
+                android:text="Mark Attendance Of Students"
+                android:layout_marginTop="-10dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Select the Subject, semester and branch to mark the attendance of individual students!!!!!"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:elevation="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:backgroundTint="@color/colorGray00"
+        android:background="@drawable/card_background">
+
+        <TextView
+            android:id="@+id/uniqueHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="36dp"
+            android:text="Attendance"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/uniqueHead"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/subTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/textBox">
+
+                    <TextView
+                        android:id="@+id/subTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_rect_05"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_library_primary"
+                        android:drawableTint="@color/colorPrimary"
+                        android:drawableEnd="@drawable/ic_down_primary"
+                        android:gravity="center_vertical"
+                        android:hint="Select Your Subject"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Gray01"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/semTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/textBox">
+
+                    <TextView
+                        android:id="@+id/semTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_rect_05"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_student_white"
+                        android:drawableTint="@color/colorPrimary"
+                        android:gravity="center_vertical"
+                        android:hint="Select Semester"
+                        android:drawableEnd="@drawable/ic_down_primary"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Gray01"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/branchTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/textBox">
+
+                    <TextView
+                        android:id="@+id/branchTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_rect_05"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_person_gray"
+                        android:gravity="center_vertical"
+                        android:hint="Select Branch"
+                        android:drawableEnd="@drawable/ic_down_primary"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Gray01"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dateTil"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/textBox">
+
+                    <TextView
+                        android:id="@+id/dateTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_rect_05"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_calendar_white"
+                        android:gravity="center_vertical"
+                        android:drawableTint="@color/colorPrimary"
+                        android:hint="Today's Date"
+                        android:drawableEnd="@drawable/ic_down_primary"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Gray01"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/markAttendanceBtn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+            android:text="Mark Attendance" />
+
+    </RelativeLayout>
+</LinearLayout>

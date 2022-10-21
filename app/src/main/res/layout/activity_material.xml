@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MaterialActivity"
+    android:orientation="vertical"
+    android:weightSum="4"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:id="@+id/imageAddRl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_rect01"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Materials"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36dp"
+                android:text="Search Your Materials"
+                android:layout_marginTop="-10dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Select the Subject, semester, branch to check the materials of your need!!!!!"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:elevation="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:backgroundTint="@color/colorGray00"
+        android:background="@drawable/card_background">
+
+        <TextView
+            android:id="@+id/materialHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="36dp"
+            android:text="Materials"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/materialHead"
+            android:layout_above="@id/searchMaterialBtn"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/semTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:elevation="20dp"
+                app:boxBackgroundColor="@color/textBox">
+
+                <TextView
+                    android:id="@+id/semTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_rect_05"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_student_white"
+                    android:drawableTint="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:hint="Select Semester"
+                    android:drawableEnd="@drawable/ic_down_primary"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Gray01"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/branchTil"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:elevation="20dp"
+                android:layout_marginBottom="45dp"
+                android:layout_below="@id/semTil"
+                app:boxBackgroundColor="@color/textBox">
+
+                <TextView
+                    android:id="@+id/branchTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_rect_05"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_person_gray"
+                    android:gravity="center_vertical"
+                    android:hint="Select Branch"
+                    android:drawableEnd="@drawable/ic_down_primary"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Gray01"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="65dp"
+            android:layout_marginEnd="20dp"
+            app:fab_addButtonColorNormal="@color/colorPrimary"
+            app:fab_addButtonColorPressed="@color/colorPrimary"
+            app:fab_expandDirection="up"
+            app:fab_labelStyle="@drawable/shape_rect_03"
+            app:fab_labelsPosition="left">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addMaterialBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="normal"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_icon="@drawable/ic_material_primary"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+        <Button
+            android:id="@+id/searchMaterialBtn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/button_background"
+            android:text="Search materials"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+</LinearLayout>
