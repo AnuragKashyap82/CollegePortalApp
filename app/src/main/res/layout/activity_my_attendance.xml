@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MyAttendanceActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@color/white"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_black"
+            app:tint="@color/black"
+            android:layout_centerVertical="true"
+            android:padding="12sp"/>
+
+        <TextView
+            android:id="@+id/subjectNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ClassName"
+            android:layout_toEndOf="@id/backBtn"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/classNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ClassName"
+            android:layout_toEndOf="@id/backBtn"
+            android:layout_below="@id/subjectNameTv"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/Gray01"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/segoe_ui_regular"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar_primary"
+            app:tint="@color/black"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="12sp"/>
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/todayAttendanceRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbarRl">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="7dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="#FBEAEB"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="25sp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp" >
+
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today's Attendance"
+                        android:textSize="14sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="18dp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/filterHighToLow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv3"
+                        android:layout_marginTop="12sp">
+
+                        <TextView
+                            android:id="@+id/tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Date"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/segoe_ui_bold"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="18dp"/>
+
+                        <TextView
+                            android:id="@+id/dateTv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:hint="Date"
+                            android:textColorHint="@color/black"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/shape_rect02"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:backgroundTint="@color/colorGray00"
+                            android:inputType="datetime"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:layout_below="@id/tv1"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_marginStart="16dp"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/emailRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/filterHighToLow"
+                        android:layout_marginTop="12sp">
+
+                        <TextView
+                            android:id="@+id/tv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Attendance Report"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/segoe_ui_bold"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="18dp"/>
+
+                        <TextView
+                            android:id="@+id/attendanceReTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:hint="Enter your Name"
+                            android:textColorHint="@color/black"
+                            android:textSize="14sp"
+                            android:padding="12sp"
+                            android:layout_marginEnd="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="gravity"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/shape_rect02"
+                            android:backgroundTint="@color/colorGray00"
+                            android:inputType="textEmailAddress"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:layout_below="@id/tv2"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="16dp"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    <com.anychart.AnyChartView
+        android:id="@+id/anyChartView"
+        android:layout_width="match_parent"
+        android:layout_below="@id/todayAttendanceRl"
+        android:layout_height="600dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="6dp"
+        android:background="@drawable/shape_rect04"
+        android:visibility="gone"/>
+
+</RelativeLayout>

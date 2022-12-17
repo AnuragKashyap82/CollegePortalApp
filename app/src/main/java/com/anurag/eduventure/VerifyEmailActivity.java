@@ -72,11 +72,11 @@ public class VerifyEmailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(VerifyEmailActivity.this, "Verification Email has been sent.Please verify", Toast.LENGTH_SHORT).show();
-                    }
-                })
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(VerifyEmailActivity.this, "Verification Email has been sent.Please verify", Toast.LENGTH_SHORT).show();
+                            }
+                        })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {

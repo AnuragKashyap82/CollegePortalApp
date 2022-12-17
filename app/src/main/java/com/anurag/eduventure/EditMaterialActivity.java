@@ -38,7 +38,6 @@ public class EditMaterialActivity extends AppCompatActivity {
     private Uri pdfUri = null;
 
     private String subject, topic, semester, branch;
-
     private static final int PDF_PICK_CODE = 1000;
 
     @Override

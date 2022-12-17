@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.anurag.eduventure.Adapters.AdapterClassroomPost;
 import com.anurag.eduventure.Adapters.AdapterMaterial;
@@ -82,6 +83,22 @@ public class ClassroomViewActivity extends AppCompatActivity {
                 showBottomSheet();
             }
         });
+        binding.attendanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClassroomViewActivity.this, AttendanceActivity.class);
+                intent.putExtra("classCode", ""+classCode);
+                startActivity(intent);
+            }
+        });
+        binding.myAttendanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClassroomViewActivity.this, MyAttendanceActivity.class);
+                intent.putExtra("classCode", ""+classCode);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadClassDetails() {
@@ -92,8 +109,16 @@ public class ClassroomViewActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot ds, @Nullable FirebaseFirestoreException error) {
                 String className = ""+ds.getString("className");
                 String subjectName = ""+ds.getString("subjectName");
+                String uid = ""+ds.getString("uid");
 
                 binding.subjectNameTv.setText(subjectName);
+                if (uid.equals(firebaseAuth.getUid())){
+                    binding.attendanceBtn.setVisibility(View.VISIBLE);
+                    binding.myAttendanceBtn.setVisibility(View.GONE);
+                }else {
+                    binding.attendanceBtn.setVisibility(View.GONE);
+                    binding.myAttendanceBtn.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

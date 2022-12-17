@@ -18,12 +18,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterComment extends RecyclerView.Adapter<AdapterComment.HolderComment> {
@@ -67,7 +73,7 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.HolderCo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (firebaseAuth.getCurrentUser() != null){
+                if (firebaseAuth.getCurrentUser() != null) {
 //                    deleteComment(modelComment, holder);
                     Toast.makeText(context, "Comments on This Book....!", Toast.LENGTH_SHORT).show();
                 }
@@ -75,32 +81,20 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.HolderCo
         });
 
     }
+
     private void loadUserDetails(ModelComment modelComment, HolderComment holder) {
         String uid = modelComment.getUid();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.child(uid)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String name = ""+snapshot.child("name").getValue();
-                        String profileImage = ""+snapshot.child("profileImage").getValue();
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(modelComment.getUid());
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                String name = snapshot.getString("name");
+                String profileImage = snapshot.getString("profileImage");
 
-                        holder.nameTv.setText(name);
-                        try {
-                            Picasso.get().load(profileImage).placeholder(R.drawable.ic_person_gray).into(holder.profileTv);
-                        }
-                        catch (Exception e){
-                            holder.profileTv.setImageResource(R.drawable.ic_person_gray);
-                        }
 
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+            }
+        });
     }
 
 //    private void deleteComment(ModelComment modelComment, HolderComment holder) {
@@ -140,24 +134,24 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.HolderCo
 //                .show();
 //    }
 
-    @Override
-    public int getItemCount() {
-        return commentArrayList.size();
-    }
-
-    class HolderComment extends RecyclerView.ViewHolder{
-
-        ShapeableImageView profileTv;
-        TextView nameTv, dateTv, commentTv;
-
-        public HolderComment(@NonNull View itemView) {
-            super(itemView);
-
-            profileTv = binding.profileTv;
-            nameTv = binding.nameTv;
-            dateTv = binding.dateTv;
-            commentTv = binding.commentTv;
+        @Override
+        public int getItemCount () {
+            return commentArrayList.size();
         }
-    }
 
-}
+        class HolderComment extends RecyclerView.ViewHolder {
+
+            ShapeableImageView profileTv;
+            TextView nameTv, dateTv, commentTv;
+
+            public HolderComment(@NonNull View itemView) {
+                super(itemView);
+
+                profileTv = binding.profileTv;
+                nameTv = binding.nameTv;
+                dateTv = binding.dateTv;
+                commentTv = binding.commentTv;
+            }
+        }
+
+    }

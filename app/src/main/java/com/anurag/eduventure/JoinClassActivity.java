@@ -14,11 +14,8 @@ import com.anurag.eduventure.databinding.ActivityJoinClassBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -29,7 +26,7 @@ import java.util.HashMap;
 
 public class JoinClassActivity extends AppCompatActivity {
     ActivityJoinClassBinding binding;
-    private String joiningCode;
+    private String joinCode;
     private ProgressDialog progressDialog;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
@@ -56,26 +53,26 @@ public class JoinClassActivity extends AppCompatActivity {
     }
 
     private void validateData() {
-        joiningCode = binding.joiningCodeEt.getText().toString().trim();
+        joinCode = binding.joiningCodeEt.getText().toString().trim();
 
-        if (TextUtils.isEmpty(joiningCode)) {
+        if (TextUtils.isEmpty(joinCode)) {
             Toast.makeText(JoinClassActivity.this, "Enter Class Code.....!!!!!!", Toast.LENGTH_SHORT).show();
         } else {
-            checkClassCode(joiningCode);
+            checkClassCode(joinCode);
         }
     }
 
-    private void checkClassCode(String joiningCode) {
+    private void checkClassCode(String joinCode) {
         progressDialog.setMessage("Checking Class Code");
         progressDialog.show();
 
-        DocumentReference documentReference  = firebaseFirestore.collection("classroom").document(joiningCode);
+        DocumentReference documentReference = firebaseFirestore.collection("classroom").document(joinCode);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
                 if (documentSnapshot.exists()) {
-                    checkAlreadyJoined(joiningCode);
+                    checkAlreadyJoined(joinCode);
                 } else {
                     progressDialog.dismiss();
                     Toast.makeText(JoinClassActivity.this, "This Class Code does not exist...!!", Toast.LENGTH_SHORT).show();
@@ -84,11 +81,11 @@ public class JoinClassActivity extends AppCompatActivity {
         });
     }
 
-    private void checkAlreadyJoined(String joiningCode) {
+    private void checkAlreadyJoined(String joinCode) {
         progressDialog.setMessage("Joining Class");
         progressDialog.show();
 
-        DocumentReference documentReference  = firebaseFirestore.collection("Users").document(firebaseAuth.getUid()).collection("classroom").document(joiningCode);
+        DocumentReference documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.getUid()).collection("classroom").document(joinCode);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
@@ -97,11 +94,10 @@ public class JoinClassActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(JoinClassActivity.this, "You have already joined this Class....!!!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    joinClass(joiningCode);
+                    joinClass(joinCode);
                 }
             }
         });
-
     }
 
     private void joinClass(String joiningCode) {
@@ -118,6 +114,7 @@ public class JoinClassActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         progressDialog.dismiss();
                         clearText();
+                        addToClassStudent(joiningCode);
                         Toast.makeText(JoinClassActivity.this, "Class Joined Successfully....", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -130,6 +127,16 @@ public class JoinClassActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void addToClassStudent(String joiningCode) {
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("uid", ""+firebaseAuth.getUid());
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("classroom");
+        databaseReference.child(joiningCode).child("Students").child(firebaseAuth.getUid()).setValue(hashMap);
+    }
+
     private void clearText() {
         binding.joiningCodeEt.setText("");
     }

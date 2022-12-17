@@ -84,18 +84,13 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
         String classCode = modelClassroom.getClassCode();
         String className = modelClassroom.getClassName();
         String subjectName = modelClassroom.getSubjectName();
+        String theme = modelClassroom.getTheme();
         String uid = modelClassroom.getUid();
         String timestamp = modelClassroom.getTimestamp();
 
         loadClassDetails(modelClassroom, holder);
         holder.classCode.setText(classCode);
 
-        holder.moreBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showBottomSheetDialog(modelClassroom, holder);
-            }
-        });
         holder.copyClassCodeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +107,6 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
                 holder.copiedClassCodeBtn.setVisibility(View.VISIBLE);
             }
         });
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,6 +120,7 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
 
     private void showBottomSheetDialog(ModelClassroom modelClassroom, HolderClassroom holder) {
         String classCode = modelClassroom.getClassCode();
+        String uid = modelClassroom.getUid();
 
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -184,6 +179,8 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(context, "Class UnEnroll...!", Toast.LENGTH_SHORT).show();
+//                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("classroom");
+//                        databaseReference.child(modelClassroom.getClassCode()).child("Students").child(firebaseAuth.getUid()).removeValue();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -206,11 +203,35 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
                 String className = "" + snapshot.getString("className");
                 String classCode = "" + snapshot.getString("classCode");
                 String uid = "" + snapshot.getString("uid");
+                String theme = "" + snapshot.getString("theme");
                 String timestamp = "" + snapshot.getString("timestamp");
 
                 holder.classNameTv.setText(className);
                 holder.subjectNameTv.setText(subjectName);
                 loadClassTeacherDetails(uid, holder);
+
+                holder.moreBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (uid.equals(firebaseAuth.getUid())){
+
+                        }else {
+                            showBottomSheetDialog(modelClassroom, holder);
+                        }
+                    }
+                });
+
+                if (theme.equals("1")){
+                    holder.classBg.setImageResource(R.drawable.class_bg_one);
+                }else if (theme.equals("2")){
+                    holder.classBg.setImageResource(R.drawable.class_bg_two);
+                }else if (theme.equals("3")){
+                    holder.classBg.setImageResource(R.drawable.class_bd_three);
+                }else if (theme.equals("4")){
+                    holder.classBg.setImageResource(R.drawable.class_bg_four);
+                }else if (theme.equals("5")){
+                    holder.classBg.setImageResource(R.drawable.class_bg_five);
+                }
 
             }
         });
@@ -223,8 +244,16 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
             public void onEvent(@Nullable DocumentSnapshot ds, @Nullable FirebaseFirestoreException error) {
 
                 String name = "" + ds.getString("name");
+                String profileImage = "" + ds.getString("profileImage");
 
-                holder.classTeacherTv.setText(name);
+                try {
+                    Picasso.get().load(profileImage).placeholder(R.drawable.ic_person_gray).into(holder.profileIv);
+                }
+                catch (Exception e){
+                    holder.profileIv.setImageResource(R.drawable.ic_person_gray);
+                }
+
+                holder.classTeacherTv.setText("("+name+")");
             }
         });
     }
@@ -237,7 +266,7 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
     class HolderClassroom extends RecyclerView.ViewHolder {
 
         TextView classNameTv, subjectNameTv, classCode, classTeacherTv, assNotCompView;
-        ImageView copyClassCodeBtn, copiedClassCodeBtn, moreBtn;
+        ImageView copyClassCodeBtn, copiedClassCodeBtn, moreBtn, classBg, profileIv;
 
         public HolderClassroom(@NonNull View itemView) {
             super(itemView);
@@ -249,6 +278,8 @@ public class AdapterClassroom extends RecyclerView.Adapter<AdapterClassroom.Hold
             copyClassCodeBtn = binding.copyClassCodeBtn;
             copiedClassCodeBtn = binding.copiedClassCodeBtn;
             moreBtn = binding.moreBtn;
+            classBg = binding.classBg;
+            profileIv = binding.profileIv;
 
         }
     }

@@ -172,11 +172,11 @@ public class MaterialViewActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void loadMaterialFromUrl(String materialUrl) {
+   private void loadMaterialFromUrl(String materialUrl) {
 
         StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(materialUrl);
         reference.getBytes(Constants.MAX_BYTES_PDF)
-                .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                 .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override
                     public void onSuccess(byte[] bytes) {
 

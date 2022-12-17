@@ -66,7 +66,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:elevation="20dp"
-        android:weightSum="2"
         android:background="@color/white"
         android:layout_alignParentBottom="true">
 
@@ -78,9 +77,8 @@
             android:drawableTop="@drawable/ic_assignment_white"
             android:drawableTint="@color/colorPrimary"
             android:text="Assignment"
-            android:fontFamily="@font/seg_ui_semibold"
             android:textSize="10dp"
-            style="@style/Widget.Material3.Button.TextButton.Icon"
+            style="@style/Widget.Material3.Button.IconButton"
             android:textColor="@color/colorPrimary"/>
 
         <Button
@@ -92,7 +90,31 @@
             android:drawableTint="@color/colorPrimary"
             android:text="Post"
             android:textSize="10dp"
-            style="@style/Widget.Material3.Button.TextButton.Icon"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:textColor="@color/colorPrimary"/>
+
+        <Button
+            android:id="@+id/attendanceBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_attendance_primary"
+            android:drawableTint="@color/colorPrimary"
+            android:text="Attendance"
+            android:textSize="10dp"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:textColor="@color/colorPrimary"/>
+
+        <Button
+            android:id="@+id/myAttendanceBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_attendance_primary"
+            android:drawableTint="@color/colorPrimary"
+            android:text="Attendance"
+            android:textSize="10dp"
+            style="@style/Widget.Material3.Button.IconButton"
             android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>

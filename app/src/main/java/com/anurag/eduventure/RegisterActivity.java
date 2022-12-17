@@ -137,8 +137,11 @@ public class RegisterActivity extends AppCompatActivity {
                                     Log.d(TAG, "onFailure: Email not sent");
                                 }
                             });
+                }else {
+
                 }
             }
+
         })
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -177,7 +180,6 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         binding.progressBar.setVisibility(View.GONE);
                         addUniqueIdToRegisteredUniqueId(uniqueId);
-//                            startActivity(new Intent(RegisterActivity.this, MainUsersActivity.class));
                         startActivity(new Intent(RegisterActivity.this, VerifyEmailActivity.class));
                         finish();
                     }

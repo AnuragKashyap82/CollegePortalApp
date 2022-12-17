@@ -1,12 +1,19 @@
 package com.anurag.eduventure;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anurag.eduventure.Adapters.AdapterComment;
@@ -22,7 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -35,7 +45,7 @@ public class CreateClassActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
 
-    private String className, subjectName;
+    private String className, subjectName, theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +66,79 @@ public class CreateClassActivity extends AppCompatActivity {
                 validateData();
             }
         });
+        binding.themeEt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showThemeDialog();
+            }
+        });
+    }
+
+    private void showThemeDialog() {
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(CreateClassActivity.this, R.style.BottomSheetStyle);
+        LayoutInflater inflater = LayoutInflater.from(CreateClassActivity.this);
+        View view1 = inflater.inflate(R.layout.select_theme_dialog, null);
+        myDialog.setView(view1);
+
+        final AlertDialog dialog = myDialog.create();
+        dialog.setCancelable(false);
+
+        ImageView themeOne = view1.findViewById(R.id.themeOne);
+        ImageView themeTwo = view1.findViewById(R.id.themeTwo);
+        ImageView themeThree = view1.findViewById(R.id.themeThree);
+        ImageView themeFour = view1.findViewById(R.id.themeFour);
+        ImageView themeFive = view1.findViewById(R.id.themeFive);
+
+        themeOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                binding.themeEt.setText("1");
+            }
+        });
+        themeTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                binding.themeEt.setText("2");
+            }
+        });
+        themeThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                binding.themeEt.setText("3");
+            }
+        });
+        themeFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                binding.themeEt.setText("4");
+            }
+        });
+        themeFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                binding.themeEt.setText("5");
+            }
+        });
+        dialog.show();
     }
 
 
     private void validateData() {
         subjectName = binding.subjectEt.getText().toString().trim();
         className = binding.classNameEt.getText().toString().trim();
+        theme = binding.themeEt.getText().toString().trim();
 
         if (TextUtils.isEmpty(subjectName)) {
             Toast.makeText(CreateClassActivity.this, "Enter Subject Name....!", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(className)) {
             Toast.makeText(CreateClassActivity.this, "Enter Class Name....!", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(theme)) {
+            Toast.makeText(CreateClassActivity.this, "Theme!!!!!", Toast.LENGTH_SHORT).show();
         } else {
             createClass();
         }
@@ -81,6 +153,7 @@ public class CreateClassActivity extends AppCompatActivity {
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("subjectName", "" + subjectName);
         hashMap.put("className", "" + className);
+        hashMap.put("theme", "" + theme);
         hashMap.put("classCode", "" + timestamp);
         hashMap.put("uid", "" + firebaseAuth.getUid());
         hashMap.put("timestamp", "" + timestamp);
@@ -109,6 +182,7 @@ public class CreateClassActivity extends AppCompatActivity {
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("subjectName", "" + subjectName);
         hashMap.put("className", "" + className);
+        hashMap.put("theme", "" + theme);
         hashMap.put("classCode", "" + timestamp);
         hashMap.put("uid", "" + firebaseAuth.getUid());
         hashMap.put("timestamp", "" + timestamp);
@@ -135,5 +209,6 @@ public class CreateClassActivity extends AppCompatActivity {
     private void clearText() {
         binding.classNameEt.setText("");
         binding.subjectEt.setText("");
+        binding.themeEt.setText("");
     }
 }

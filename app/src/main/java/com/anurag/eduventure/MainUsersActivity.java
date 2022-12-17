@@ -83,7 +83,7 @@ public class MainUsersActivity extends AppCompatActivity {
     TextView headerStudentIdTv, headerEmailTv, nameTv, seeAllTv;
     Toolbar drawerBtn;
     RecyclerView timeTableRv;
-    RelativeLayout noticeRl, classroomRl, timeTableRl;
+    RelativeLayout noticeRl, classroomRl, timeTableRl, libraryRl;
     private ArrayList<ModelTimeTable> timeTableArrayList;
     private AdapterTimeTable adapterTimeTable;
     FirebaseAuth firebaseAuth;
@@ -121,6 +121,7 @@ public class MainUsersActivity extends AppCompatActivity {
         noticeRl = findViewById(R.id.noticeRl);
         classroomRl = findViewById(R.id.classroomRl);
         timeTableRl = findViewById(R.id.timeTableRl);
+        libraryRl = findViewById(R.id.libraryRl);
 
 
         View headerView = navigationView.getHeaderView(0);
@@ -159,6 +160,12 @@ public class MainUsersActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainUsersActivity.this, ClassroomActivity.class));
+            }
+        });
+        libraryRl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainUsersActivity.this, LibraryActivity.class));
             }
         });
         timeTableRl.setOnClickListener(new View.OnClickListener() {
@@ -572,7 +579,6 @@ public class MainUsersActivity extends AppCompatActivity {
     }
 
     final List<SlideModel> schoolBanner = new ArrayList<>();
-
     private void loadSlider() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Slider");
         reference

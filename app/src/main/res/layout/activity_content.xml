@@ -186,7 +186,7 @@
                             android:background="@drawable/shape_rect_05"
                             android:backgroundTint="@color/white"
                             android:elevation="5dp"
-                            android:padding="22dp"
+                            android:padding="26dp"
                             android:src="@drawable/ic_notice_primary"
                             app:tint="@color/black" />
 
@@ -222,7 +222,7 @@
                             android:background="@drawable/shape_rect_05"
                             android:backgroundTint="@color/white"
                             android:elevation="5dp"
-                            android:padding="22dp"
+                            android:padding="26dp"
                             android:src="@drawable/ic_classroom_primary"
                             app:tint="@color/black" />
 
@@ -257,7 +257,7 @@
                             android:background="@drawable/shape_rect_05"
                             android:backgroundTint="@color/white"
                             android:elevation="5dp"
-                            android:padding="22dp"
+                            android:padding="26dp"
                             android:src="@drawable/ic_library_primary"
                             app:tint="@color/black" />
 
@@ -277,6 +277,54 @@
                     </RelativeLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/IvLl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/IvLl"
+                    android:layout_marginTop="12sp"
+                    android:weightSum="3">
+
+                    <RelativeLayout
+                        android:id="@+id/libraryRl"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/libraryIv"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/shape_rect_05"
+                            android:backgroundTint="@color/white"
+                            android:elevation="5dp"
+                            android:padding="26dp"
+                            android:src="@drawable/ic_material_primary"
+                            app:tint="@color/black" />
+
+                        <TextView
+                            android:id="@+id/libraryTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/libraryIv"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:text="Library"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
             </RelativeLayout>
 
 

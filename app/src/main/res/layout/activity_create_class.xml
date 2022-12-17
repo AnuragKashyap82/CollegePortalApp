@@ -85,12 +85,35 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/Gray01" />
 
+            <TextView
+                android:id="@+id/themeEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/classNameEt"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                android:backgroundTint="@color/colorGray02"
+                android:drawableEnd="@drawable/ic_library_primary"
+                android:drawablePadding="20dp"
+                android:drawableTint="@color/colorGray02"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:hint="Select Theme"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
 
             <Button
                 android:id="@+id/createClassBtn"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_below="@id/classNameEt"
+                android:layout_below="@id/themeEt"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="40dp"

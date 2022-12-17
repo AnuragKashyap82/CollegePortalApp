@@ -61,7 +61,8 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         if (remoteMessage.getData().get("activity").matches("Notice")){
             resultIntent = new Intent(getApplicationContext(), NoticeActivity.class);
-            resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         }else if(remoteMessage.getData().get("activity").matches("MaterialActivity")){
             resultIntent = new Intent(getApplicationContext(), MaterialActivity.class);

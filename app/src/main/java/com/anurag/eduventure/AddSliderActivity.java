@@ -92,7 +92,6 @@ public class AddSliderActivity extends AppCompatActivity {
 
     private void validateData() {
 
-
         if (image_uri == null) {
             Toast.makeText(this, "Add Slider Image to be Uploaded....!", Toast.LENGTH_SHORT).show();
             return;
